@@ -1,0 +1,15 @@
+{
+	"nodes":[
+		{"id":"e29b9e2d34f0e457","x":-560,"y":-140,"width":1680,"height":380,"type":"group","label":"Echo server & client"},
+		{"id":"5f89b71c277194ea","type":"text","text":"## TCP CLIENT\n\n`connect`\n","x":40,"y":2,"width":260,"height":98},
+		{"id":"af815c1558152756","type":"text","text":"## `fputs`","x":-500,"y":70,"width":250,"height":60},
+		{"id":"aee16a3beba82479","type":"text","text":"## `fgets`","x":-500,"y":-50,"width":250,"height":50},
+		{"id":"a811f7770cca16c7","type":"text","text":"## TCP SERVER \n\n`accept` connection","x":720,"y":2,"width":261,"height":87}
+	],
+	"edges":[
+		{"id":"1efb779924bfffba","fromNode":"5f89b71c277194ea","fromSide":"left","toNode":"af815c1558152756","toSide":"right"},
+		{"id":"92eb644a2338030e","fromNode":"aee16a3beba82479","fromSide":"right","toNode":"5f89b71c277194ea","toSide":"left"},
+		{"id":"1e7643ed5d5dfe35","fromNode":"a811f7770cca16c7","fromSide":"bottom","toNode":"5f89b71c277194ea","toSide":"right","label":"`writen`"},
+		{"id":"bce4c514495f8a95","fromNode":"5f89b71c277194ea","fromSide":"right","toNode":"a811f7770cca16c7","toSide":"top","label":"`readline`"}
+	]
+}
