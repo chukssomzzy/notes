@@ -1,0 +1,18 @@
+{
+	"nodes":[
+		{"id":"01a176f72081da31","type":"text","text":"# CLIENT CONNECTION\n\n## 1","x":320,"y":36,"width":304,"height":164},
+		{"id":"5900d10610b02a40","type":"text","text":"# Client Connection \n\n## 2 ","x":740,"y":36,"width":240,"height":164},
+		{"id":"987538ff9cafb3f1","type":"text","text":"# Client Connection \n\n## 3","x":1060,"y":36,"width":240,"height":164},
+		{"id":"af30c559419d0805","type":"text","text":"# Client Connection\n\n# 4","x":1440,"y":40,"width":240,"height":160},
+		{"id":"36c62bd660d84f8c","type":"text","text":"# SERVER PROCESS\n\nThe child Processes terminates at the same time hence the server process receives 5 `SIGCHLD` signals at the time and since posix doesn' t queue SIGNALS only the first and the last signals are handled. \n","x":1000,"y":1040,"width":440,"height":200},
+		{"id":"ef5860652f4a3068","type":"text","text":"# Client Connection \n\n## 5","x":1840,"y":36,"width":230,"height":160},
+		{"id":"e04cbe61f47d6413","x":1059,"y":760,"width":323,"height":179,"type":"text","text":"## SERVER SPAWN FIVE SERVER CHILD PROCESSES TO HANDLE CONNECTION"}
+	],
+	"edges":[
+		{"id":"954087c345f7d45e","fromNode":"01a176f72081da31","fromSide":"bottom","toNode":"36c62bd660d84f8c","toSide":"top","label":"`exit`"},
+		{"id":"593eba7907fa3273","fromNode":"5900d10610b02a40","fromSide":"bottom","toNode":"36c62bd660d84f8c","toSide":"top","label":"`exit`"},
+		{"id":"7008d6a137391162","fromNode":"987538ff9cafb3f1","fromSide":"bottom","toNode":"36c62bd660d84f8c","toSide":"top","label":"`exit`"},
+		{"id":"9409819b8d4e72f4","fromNode":"af30c559419d0805","fromSide":"bottom","toNode":"36c62bd660d84f8c","toSide":"top","label":"`exit`"},
+		{"id":"a08afe2cf4b2b563","fromNode":"ef5860652f4a3068","fromSide":"bottom","toNode":"36c62bd660d84f8c","toSide":"top","label":"`exit`"}
+	]
+}

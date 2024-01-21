@@ -204,3 +204,38 @@ int Accept(int listenfd, struct sockaddr *servaddr, socklen_t *addrlen)
 
 Recalling of system calls are fine for function such as `read`, `write`, `select`, `open`. But when connect function is interrupted by a caught signal. Recalling `connect` returns immediately with an error. If the call is not restarted by the kernel, `select` is called to wait for the connection to complete. 
 ## `wait` and `waitpid` functions 
+
+| `# include <sys/wait.h ` |
+| :----: |
+| `pid_t wait(int *syslock);` |
+| `pid_t waitpid(pid_t pid, int *syslock, int option);` |
+
+
+`wait` and `waitpid` functions both return two value the process id of the terminated child process and a `statlock` pointer that returns the information of the  child process if it exists normally, was terminated by a kill signal or a job control signal, Macros like `WIFEXIST` tells us how the child process existed and the `WIFSTATUS` returns the exist status of child or the value of the job control signal that killed the child. The major difference between `wait` and `waitpid` is flexibility, A call to wait blocks the calling process if there is still an executing child and block till the first child terminate. `waitpid` gives us more control to choose if we want wait to block and the specific child to wait for through it arguments options and pid. A value of -1 to pid causes `waitpid` to wait for the first terminating child of the calling process and option `WNOHANG` tell wait not to block. 
+
+### Difference Between `wait` and `waitpid`
+
+When multiple Client exist at the same time. 
+![[Multiple SIGCHLD.canvas|Multiple SIGCHLD]]
+
+Correct Version of `sig_chld` which handles multiple `SIGCHLD` 
+
+```C 
+# include <unp.h> 
+
+/**
+ * sig_chld - wait for a child to terminate
+ * @signo: signal received
+ */
+
+void sig_chld(int __attribute__((unused)) signo)
+{
+	pid_t pid;
+	int stat;
+
+	while ((pid = waitpid(-1, &stat, WNOHANG)) > 0)
+		printf("Child %i terminated\n", pid);
+}
+```
+
+### Termination Of Server Process (CHLD)
